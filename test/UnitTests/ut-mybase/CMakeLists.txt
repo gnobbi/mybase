@@ -4,7 +4,7 @@ file(GLOB_RECURSE external_header include/*.h)
 file(GLOB_RECURSE internal_header src/*.h)
 file(GLOB_RECURSE srcs src/*.cpp)
 
-add_library(${exe_name} ${external_header} ${internal_header} ${srcs})
+add_executable(${exe_name} ${external_header} ${internal_header} ${srcs})
 
 # source filters
 file(GLOB internal_header ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h)
@@ -28,14 +28,6 @@ FOREACH(subdir ${SUBDIRS})
 	source_group(include\\${subdir} FILES ${external_module_header})
 ENDFOREACH()
 
-set_target_properties(${exe_name} PROPERTIES COMPILE_DEFINITIONS "COMPILING_DLL=1")
-set_target_properties (${exe_name} PROPERTIES FOLDER lib)
-include_directories(include)
+set_target_properties (${exe_name} PROPERTIES FOLDER test)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../Catch)
 include_directories(src)
-
-# tests
-SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_SOURCE_DIR}/test/UnitTests)
-FOREACH(subdir ${SUBDIRS})
-	set(exe_name ${subdir})
-	add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test/UnitTests/${subdir})
-ENDFOREACH()

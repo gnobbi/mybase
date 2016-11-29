@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 file(GLOB_RECURSE external_header include/*.h)
 file(GLOB_RECURSE internal_header src/*.h)
 file(GLOB_RECURSE srcs src/*.cpp)
+ADD_MSVC_PRECOMPILED_HEADER(${CMAKE_CURRENT_SOURCE_DIR}/src/precompiled.cpp "${srcs}")
 
 add_library(${exe_name} ${external_header} ${internal_header} ${srcs})
 
@@ -32,6 +33,7 @@ set_target_properties(${exe_name} PROPERTIES COMPILE_DEFINITIONS "COMPILING_DLL=
 set_target_properties (${exe_name} PROPERTIES FOLDER lib)
 include_directories(include)
 include_directories(src)
+
 
 # tests
 SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_SOURCE_DIR}/test/UnitTests)

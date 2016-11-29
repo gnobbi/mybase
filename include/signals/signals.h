@@ -12,7 +12,7 @@ struct Signal {
 	std::vector<std::function<R(Args...)>> vec;
 	int Subscribe(std::function<R(Args...)>(f)) {
 		vec.push_back(f);
-		return vec.size() - 1;
+		return static_cast<int>(vec.size()) - 1;
 	}
 
 	void Release(int index) {

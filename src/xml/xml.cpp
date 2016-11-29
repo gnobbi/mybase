@@ -1,3 +1,5 @@
+#include "precompiled.h"
+
 #include "xml/xml.h"
 #include <iostream>
 

@@ -1,7 +1,7 @@
+#include "precompiled.h"
 #include <catch.hpp>
 #include <signals/signals.h>
 
-#include <string>
 
 typedef mybase::Signal<void, int> TestEventHandler;
 

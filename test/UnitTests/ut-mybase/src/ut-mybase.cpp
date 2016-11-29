@@ -1,3 +1,4 @@
+#include "precompiled.h"
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 
